@@ -6,8 +6,8 @@ const findMinimum = (arr) => {
 
   while (l < r) {
     const m = Math.floor((l + r) / 2);
-    if (arr[m] < arr[m + 1]) r = m;
-    else l = m + 1;
+    if (arr[m] > arr[r]) l = m + 1;
+    else r = m;
   }
 
   return arr[l];
