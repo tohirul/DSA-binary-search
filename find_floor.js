@@ -4,32 +4,34 @@ const findFloor = (arr, target) => {
   let start = 0,
     end = arr.length - 1,
     floor = -1;
-  console.log(`---------------------------`);
 
   while (start <= end) {
     const focal = Math.floor((start + end) / 2);
-    console.log(`start: ${start}, end: ${end}, focal: ${focal}`);
+    console.log(`-------------------`);
+    console.log(
+      `start: ${start}, end: ${end}, focal: ${focal}, floor: ${floor}`
+    );
+    console.log(`Focal Value: ${arr[focal]}`);
     if (arr[focal] === target) {
       console.log(`Target Located: ${focal}: ${arr[focal]}`);
-      return start;
+      return arr[focal];
     } else if (arr[focal] > target) {
-      console.log(
-        `Focal: ${focal}: ${arr[focal]} is greater than the target, reducing end`
-      );
+      console.log(`arr[focal]: ${arr[focal]} > target: ${target}`);
+      console.log(`Upating End Point ${end}: ${focal - 1}`);
       end = focal - 1;
     } else {
+      console.log(`arr[focal]: ${arr[focal]} < target: ${target}`);
+      console.log(`Updating floor from ${floor}: ${arr[focal]}`);
       floor = arr[focal];
-      console.log(
-        `Focal: ${focal}: ${arr[focal]} is smaller than the target, forwarding start`
-      );
+      console.log(`Updating Starting Point ${start}: ${focal + 1}`);
       start = focal + 1;
     }
   }
-  console.log(`Final: ${start}: ${arr[start]}`);
+  console.log(`Final: ${floor}`);
   return floor;
 };
 
 console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 4));
-console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 9));
-console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 12));
-console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 19));
+// console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 9));
+// console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 12));
+// console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 19));
