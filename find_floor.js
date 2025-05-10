@@ -21,8 +21,9 @@ const findFloor = (arr, target) => {
       end = focal - 1;
     } else {
       console.log(`arr[focal]: ${arr[focal]} < target: ${target}`);
+
       console.log(`Updating floor from ${floor}: ${arr[focal]}`);
-      floor = arr[focal];
+      if (arr[focal] > floor) floor = arr[focal];
       console.log(`Updating Starting Point ${start}: ${focal + 1}`);
       start = focal + 1;
     }
@@ -32,6 +33,4 @@ const findFloor = (arr, target) => {
 };
 
 console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 4));
-// console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 9));
-// console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 12));
-// console.log(findFloor([2, 3, 5, 9, 14, 16, 18, 19, 22], 19));
+
